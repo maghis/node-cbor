@@ -119,10 +119,3 @@ test('canonical numbers', t => {
     t.is(bs.read().toString('hex'), numEnc[1])
   }
 })
-
-test('larger buffers', t => {
-  const small = new Buffer(50)
-  t.true(!!cbor.encode(small))
-  const large = (new Array(4096).fill(1)).map(t => ({idx: 1, data: new Buffer(1024).fill(1)}))
-  t.throws(() => cbor.encode(large))
-})
